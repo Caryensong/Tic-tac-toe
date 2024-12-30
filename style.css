@@ -1,12 +1,15 @@
 body {
    font-family: 'Open Sans', sans-serif;
-   display: flex;
-   justify-content: center;
-   align-items: center;
    height: 100vh;
    margin: 0;
    background-color: #323232;
+   color: aliceblue;
 }
+h1{
+   text-align: center;
+   padding-bottom: 50px;
+}
+
 #content {
    display: flex;
    justify-content: center;
