@@ -4,6 +4,7 @@ body {
    margin: 0;
    background-color: #323232;
    color: aliceblue;
+   position: relative;
 }
 h1{
    text-align: center;
@@ -14,11 +15,13 @@ h1{
    display: flex;
    justify-content: center;
    align-items: center;
+   position: relative;
 }
 table {
    border-collapse: collapse;
    margin: auto;
    border-spacing: 0;
+   position: relative;
 }
 td {
    width: 100px;
@@ -54,3 +57,10 @@ td:last-child {
    border-right: none;
 }
 
+.winning-line {
+   position: absolute;
+   background-color: white;
+   height: 5px;
+   transform-origin: left center;
+   z-index: 10;
+}
