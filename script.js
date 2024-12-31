@@ -14,7 +14,6 @@ function init(){
    render();
 }
 
-// Function to generate SVG for a circle
 function generateCircleSVG() {
    return `
        <svg width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
@@ -32,43 +31,51 @@ function generateCircleSVG() {
                    attributeName="stroke-dashoffset" 
                    from="188.4" 
                    to="0" 
-                   dur="2s" 
+                   dur="500ms" 
                    fill="freeze" 
                />
            </circle>
        </svg>
    `;
 }
+function generateCrossSVG() {
+    return `
+        <svg width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="10" x2="60" y2="60" stroke="red" stroke-width="5">
+                <animate attributeName="x2" from="10" to="60" dur="500ms" fill="freeze" />
+                <animate attributeName="y2" from="10" to="60" dur="500ms" fill="freeze" />
+            </line>
+            <line x1="60" y1="10" x2="10" y2="60" stroke="red" stroke-width="5">
+                <animate attributeName="x2" from="60" to="10" dur="500ms" fill="freeze" />
+                <animate attributeName="y2" from="10" to="60" dur="500ms" fill="freeze" />
+            </line>
+        </svg>
+    `;
+}
 
 
-// Function to render the Tic Tac Toe board
+
 function render() {
-   // Initialize an empty string for the HTML table
    let tableHTML = '<table>';
 
-   // Loop through the field array to generate rows and cells
    for (let i = 0; i < 3; i++) {
-       tableHTML += '<tr>'; // Start a new row
+       tableHTML += '<tr>'; 
        for (let j = 0; j < 3; j++) {
-           const index = i * 3 + j; // Calculate the index in the field array
-           const value = field[index]; // Get the value at this index
+           const index = i * 3 + j; 
+           const value = field[index]; 
 
-           // Determine the content for the cell
            let cellContent = '';
            if (value === 'circle') cellContent = generateCircleSVG();
-           if (value === 'cross') cellContent = 'X';
+           if (value === 'cross') cellContent = generateCrossSVG();
 
-           // Add the cell to the row
            tableHTML += `<td>${cellContent}</td>`;
        }
-       tableHTML += '</tr>'; // End the row
+       tableHTML += '</tr>'; 
    }
 
-   tableHTML += '</table>'; // End the table
+   tableHTML += '</table>'; 
 
-   // Render the table HTML inside the #content div
    document.getElementById('content').innerHTML = tableHTML;
 }
 
-// Initial render of the board
 render();
