@@ -90,7 +90,6 @@ function drawWinningLine(combination) {
     document.getElementById('content').appendChild(line);
 }
 
-
 function handleCellClick(index, cell) {
     if (fields[index] === null) {
         fields[index] = currentPlayer;
@@ -141,4 +140,20 @@ function render() {
     tableHTML += '</table>'; 
 
     document.getElementById('content').innerHTML = tableHTML;
+}
+
+function startNewGame(){
+    fields = [
+        null, 
+        null, 
+        null, 
+        null, 
+        null, 
+        null, 
+        null,
+        null,
+        null
+     ];
+     
+    render();
 }
