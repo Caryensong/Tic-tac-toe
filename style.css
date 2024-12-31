@@ -64,3 +64,20 @@ td:last-child {
    transform-origin: left center;
    z-index: 10;
 }
+
+button{
+   display: block;
+   margin: 20px auto;
+   padding: 10px 20px;
+   cursor: pointer;
+   color: aliceblue;
+   font-weight: bolder;
+   background-color: rgb(97, 155, 255);
+   border: 2px solid #ffff;
+   border-radius: 5px;
+}
+
+button:hover{
+   background-color: #ffff;
+   color:  rgb(97, 155, 255);
+}
