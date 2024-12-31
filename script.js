@@ -100,6 +100,14 @@ function updateStatus(winner = null) {
     }
 }
 
+function triggerConfetti() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+}
+
 function handleCellClick(index, cell) {
     if (fields[index] === null) {
         fields[index] = currentPlayer;
@@ -111,6 +119,7 @@ function handleCellClick(index, cell) {
         if (winCombination) {
             drawWinningLine(winCombination);
             updateStatus(currentPlayer);
+            triggerConfetti(); 
         } else if (fields.every((field) => field !== null)) {
             updateStatus(); // Unentschieden
         } else {
