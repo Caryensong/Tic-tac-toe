@@ -81,3 +81,10 @@ button:hover{
    background-color: #ffff;
    color:  rgb(97, 155, 255);
 }
+
+
+#status{
+   text-align: center;
+   padding-bottom: 20px;
+   font-family:monospace;
+}

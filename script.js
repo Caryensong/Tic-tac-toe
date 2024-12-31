@@ -62,7 +62,6 @@ const WINNING_COMBINATIONS = [
 ];
 let currentPlayer = 'circle';
 
-
 function drawWinningLine(combination) {
     const lineColor = '#ffffff';
     const lineWidth = 5;
@@ -90,6 +89,17 @@ function drawWinningLine(combination) {
     document.getElementById('content').appendChild(line);
 }
 
+function updateStatus(winner = null) {
+    const statusDiv = document.getElementById('status');
+    if (winner) {
+        statusDiv.textContent = `${winner === 'circle' ? 'Spieler O Kreis' : 'Spieler X Kreuz'} hat gewonnen!`;
+    } else if (fields.every((field) => field !== null)) {
+        statusDiv.textContent = 'Unentschieden!';
+    } else {
+        statusDiv.textContent = `Spieler ${currentPlayer === 'circle' ? 'O' : 'X'} ist am Zug`;
+    }
+}
+
 function handleCellClick(index, cell) {
     if (fields[index] === null) {
         fields[index] = currentPlayer;
@@ -97,12 +107,16 @@ function handleCellClick(index, cell) {
         cell.innerHTML = currentPlayer === 'circle' ? generateCircleSVG() : generateCrossSVG();
         cell.onclick = null;
 
-        if (isGameFinished()) {
-            const winCombination = getWinningCombination();
+        const winCombination = getWinningCombination();
+        if (winCombination) {
             drawWinningLine(winCombination);
+            updateStatus(currentPlayer);
+        } else if (fields.every((field) => field !== null)) {
+            updateStatus(); // Unentschieden
+        } else {
+            currentPlayer = currentPlayer === 'circle' ? 'cross' : 'circle';
+            updateStatus(); // Nächster Spieler
         }
-
-        currentPlayer = currentPlayer === 'circle' ? 'cross' : 'circle';
     }
 }
 
@@ -154,6 +168,6 @@ function startNewGame(){
         null,
         null
      ];
-     
+
     render();
 }
